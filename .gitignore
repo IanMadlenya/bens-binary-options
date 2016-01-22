@@ -1,0 +1,33 @@
+# exclude the built webpack files - do this before server starts
+lib
+dist
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+
+lib-cov
+coverage
+.grunt
+.lock-wscript
+build/Release
+node_modules
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Ignore my notes
+.*.md
+
+pusher.js
+
+# Ignore my env vars
+.env

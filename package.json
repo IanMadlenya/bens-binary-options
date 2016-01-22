@@ -1,0 +1,27 @@
+{
+  "name": "bens-binary-options",
+  "version": "1.0.0",
+  "description": "Simple binary options platform",
+  "main": "index.js",
+  "scripts": {
+    "knex": "knex",
+    "start": "babel-node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-polyfill": "^6.3.14",
+    "babel-preset-stage-0": "^6.3.13",
+    "boom": "^3.1.1",
+    "hapi": "^12.1.0",
+    "joi": "^7.2.2",
+    "knex": "^0.9.0",
+    "objection": "^0.4.0",
+    "pg": "^4.4.3",
+    "pusher": "^1.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.4.5",
+    "babel-preset-es2015": "^6.3.13"
+  }
+}
