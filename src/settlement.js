@@ -15,18 +15,17 @@ function generateOffer(asset) {
 }
 
 export function tick() {
-  console.log('ok!')
+ 
   Object.keys(assets).forEach(name => {
     const asset = assets[name]
     let offer = generateOffer(asset)
     if (subscribed[asset]) {
-    console.log('pushing to pusher')
-    pusher.trigger('EUR_GBP', 'tick', offer)
+      console.log('pushing to pusher')
+      pusher.trigger('EUR_GBP', 'tick', offer)
   }
   })
   
 }
-
 
 export const createOption = async function (asset, user, strikePrice, amount, payout, duration, type ) {
   
@@ -80,34 +79,12 @@ export const createOption = async function (asset, user, strikePrice, amount, pa
 
 }
 
-export function payment(conn, credit, debit, amount, description) {
-  return conn.insert({
-    debit_account: debit,
-    credit_account: credit,
-    amount: amount,
-    description: description
-  })
-  .into('ledger')
-  .returning('id')
-}
 
-function checkAmount(conn, account, name) {
-  return conn
-    .select(conn.raw('COALESCE(sum(amount), 0.0)'))
-    .from('ledger')
-    .where(account, name)
-    .first()
-    .then(res => res.coalesce)
-}
-
-
- //insert into options (expires_at, "user", asset, amount) values (current_timestamp, 'bob', 'haribo', 10)
 
 export const settle = async function () {
-  console.log('settling')
-  
+    
   try {
-      // looks for options that have expired but not settled:
+    // looks for options that have expired but not settled:
     const options = await db.select('*')
       .from('options')
       .where('expires_at', '<', new Date())
@@ -134,14 +111,7 @@ export const settle = async function () {
             console.log('outside')
           }
           
-        } catch (err) {
-          console.log(err)
-        }
-
-      })
-     
-        
-    /*
+            /*
      if in the money
     - move money from pending to user
     - move money from house to user
@@ -149,6 +119,13 @@ export const settle = async function () {
     if not
     - move money from pending to house
     */
+          
+        } catch (err) {
+          console.log(err)
+        }
+
+      })
+
      }
   } catch (err) {
     console.log(err)
